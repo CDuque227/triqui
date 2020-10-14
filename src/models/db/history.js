@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let historySchema = new Schema({
-    positions: Object,
+    positions: Array,
     winner: String
 
 });

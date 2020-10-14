@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="965e69e7-98e2-4c69-a96a-cb72b53e8b2e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/Grid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/Triqui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/Triqui.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/style/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/triqui-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/triqui-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/db/history.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/db/history.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +28,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -30,12 +36,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="serviceApi" />
+    </option>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -45,11 +57,21 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602635485866</updated>
-      <workItem from="1602635486981" duration="1050000" />
+      <workItem from="1602635486981" duration="8413000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1739" y="260" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602644317038">
+      <screen x="1366" y="0" width="1280" height="1024" />
+    </state>
+    <state x="1739" y="260" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.265.1299.741/1366.0.1280.1024@1366.0.1280.1024" timestamp="1602644317038" />
+    <state x="1670" y="232" width="672" height="677" key="run.anything.popup" timestamp="1602640121796">
+      <screen x="1366" y="0" width="1280" height="1024" />
+    </state>
+    <state x="1670" y="232" width="672" height="677" key="run.anything.popup/67.265.1299.741/1366.0.1280.1024@1366.0.1280.1024" timestamp="1602640121796" />
   </component>
 </project>

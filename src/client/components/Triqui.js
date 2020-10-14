@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import'../style/App.css'
 import uid from 'uid';
-
+import { serviceApi } from "./helpers/request";
+import { MyAwesomeTable }from "./table"
 export default class Triqui extends Component {
     constructor(props) {
         super(props);
@@ -34,7 +35,6 @@ export default class Triqui extends Component {
             }
         }
         let winner = this.checkWinner()
-        console.log("winnner", winner)
         if(winner == 'X'){
             this.setState({
                 gameEnd :true,
@@ -67,19 +67,44 @@ export default class Triqui extends Component {
         let winner = null,
             moves = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8], [0,4,8], [2,4,6]],
             board = this.gameState.board
-
-
+        //
+        // serviceApi('', 'http://localhost:3000/api/getData', 'GET')
+        //     .then(data => {
+        //         console.log("dataaa",data)
+        // }).catch(error => {
+        //     console.log("errorr", error)
+        // })
         for (let i = 0; i <= moves.length; i++){
-            console.log("moves.length", moves.length)
-            console.log("iii", i)
             console.log(board[moves[i][0]], board[moves[i][1]],board[moves[i][2]])
             if(board[moves[i][0]] == board[moves[i][1]] && board[moves[i][1]] == board[moves[i][2]]){
                 winner = board[moves[i][0]]
+                if(winner.length == 1){
+                    let dataToSend = {
+                        winner : winner,
+                        positions : board
+                    }
+                    serviceApi(dataToSend, 'http://localhost:3000/api/save', 'POST')
+                        .then(data => {
+                            console.log("dataaa",data)
+                    }).catch(error => {
+                            console.log("errorr", error)
+                    })
+                }
                 return winner
             }
             if(this.gameState.totalMoves == 9){
-                console.log("winner", winner)
                 winner ='none'
+
+                let dataToSend = {
+                    winner : winner,
+                    positions : board
+                }
+                serviceApi(dataToSend, 'http://localhost:3000/api/save', 'POST')
+                    .then(data => {
+                        console.log("dataaa",data)
+                    }).catch(error => {
+                        console.log("errorr", error)
+                })
                 return winner
             }
         }
@@ -110,7 +135,9 @@ export default class Triqui extends Component {
                 <div>
                     {this.state.squares}
                 </div>
+
             </div>
+
         )
     }
 }
