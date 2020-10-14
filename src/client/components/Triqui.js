@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import'../style/App.css'
 import uid from 'uid';
 import { serviceApi } from "./helpers/request";
-import  ListItem  from "./list"
 
 export default class Triqui extends Component {
     constructor(props) {
@@ -13,7 +12,8 @@ export default class Triqui extends Component {
             winner:undefined,
             squares:'',
             showInfo:false,
-            tasks:[]
+            tasks:[],
+            list:''
         }
 
         this.gameState = {
@@ -62,7 +62,7 @@ export default class Triqui extends Component {
         return(
             <div>
                 <div>{str}</div>
-                <div onClick={(e)=>{this.restart()}}> RESTART </div>
+                <button onClick={(e)=>{this.restart()}}> RESTART </button>
             </div>
         )
     }
@@ -84,15 +84,14 @@ export default class Triqui extends Component {
                     serviceApi(dataToSend, 'http://localhost:3000/api/save', 'POST')
                         .then(data => {
                             console.log("dataaa",data)
-                    }).catch(error => {
-                            console.log("errorr", error)
+                        }).catch(error => {
+                        console.log("errorr", error)
                     })
                 }
                 return winner
             }
             if(this.gameState.totalMoves == 9){
                 winner ='none'
-
                 let dataToSend = {
                     winner : winner,
                     positions : board
@@ -101,7 +100,7 @@ export default class Triqui extends Component {
                     .then(data => {
                         console.log("dataaa",data)
                     }).catch(error => {
-                        console.log("errorr", error)
+                    console.log("errorr", error)
                 })
                 return winner
             }
@@ -111,17 +110,17 @@ export default class Triqui extends Component {
         this.gameState.board = Array(9).fill('')
         this.gameState.totalMoves = 0
         this.setState({
-           turn: 'X',
-           gameEnd:false,
-           winnerLine:'',
-           squares:<div id="board" onClick={(e)=>this.clicked(e)}>
-               {
-                this.gameState.board.map((square, key)=>{
-                    return <div className ="square" data-square={key} key={uid()}></div>
+            turn: 'X',
+            gameEnd:false,
+            winnerLine:'',
+            squares:<div id="board" onClick={(e)=>this.clicked(e)}>
+                {
+                    this.gameState.board.map((square, key)=>{
+                        return <div className ="square" data-square={key} key={uid()}></div>
 
-               })
-               }
-           </div>
+                    })
+                }
+            </div>
         })
     }
 
@@ -132,11 +131,13 @@ export default class Triqui extends Component {
                 for (let i = 0; i < data.data.length; i ++){
                     arrayHistorial.push(data.data[i].winner)
                 }
-                this.setState({tasks:arrayHistorial}, ()=>{
-                    console.log("actualiza ?? ", this.state.tasks)
+                this.setState({
+                    tasks:arrayHistorial.map((item)=>{
+                        return <li>{item}</li>
+                    }),
                 })
-        }).catch(error => {
-            console.log("errorr", error)
+            }).catch(error => {
+            console.log("error", error)
         })
     }
 
@@ -152,11 +153,10 @@ export default class Triqui extends Component {
                     {this.state.squares}
                 </div>
                 <div>
-                    <button style={{ display: !this.state.showInfo ? "block" : "none" }}onClick={(e)=>{this.getHistorial()}}> HISTORIAL </button>
+                    <button onClick={(e)=>{this.getHistorial()}}> HISTORIAL </button>
                 </div>
                 <div >
-                    <ListItem
-                    tasks = {this.state.tasks}></ListItem>
+                    {this.state.tasks}
                 </div>
             </div>
 

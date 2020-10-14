@@ -3,10 +3,7 @@ var mongoose = require('mongoose');
 
 let insertData = (values) => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(process.env.DB_URL)
-        var db = mongoose.connection;
-        db.on('error', console.error.bind(console, 'connection error:'));
-        db.once('open', () => {
+        mongoose.connect(process.env.DB_URL, {useNewUrlParser: true})
             History.create(values, (err, result) => {
                 if (err) {
                     reject(err)
@@ -14,8 +11,6 @@ let insertData = (values) => {
                     resolve(result);
                 }
             });
-        });
-
     }).
     catch((error) => {
         reject(false)
@@ -24,20 +19,14 @@ let insertData = (values) => {
 
 let getData = async () =>{
     return new Promise((resolve, reject) => {
-        mongoose.connect(process.env.DB_URL)
-        var db = mongoose.connection;
-        db.on('error', console.error.bind(console, 'connection error:'));
-        db.once('open', () => {
+        mongoose.connect(process.env.DB_URL, {useNewUrlParser: true})
             History.find({},(err, result) => {
                 if (err) {
                     reject(err)
                 } else {
-                    console.log("result", result)
                     resolve(result);
                 }
             });
-        });
-
     }).
     catch((error) => {
         reject(error)
