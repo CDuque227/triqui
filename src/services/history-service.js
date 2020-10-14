@@ -33,7 +33,7 @@ let getData = async () =>{
                     reject(err)
                 } else {
                     console.log("result", result)
-                    resolve(result[0]);
+                    resolve(result);
                 }
             });
         });

@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import'../style/App.css'
 import uid from 'uid';
 import { serviceApi } from "./helpers/request";
-import { MyAwesomeTable }from "./table"
+import  ListItem  from "./list"
+
 export default class Triqui extends Component {
     constructor(props) {
         super(props);
@@ -10,7 +11,9 @@ export default class Triqui extends Component {
             turn:'X',
             gameEnd:false,
             winner:undefined,
-            squares:''
+            squares:'',
+            showInfo:false,
+            tasks:[]
         }
 
         this.gameState = {
@@ -21,6 +24,7 @@ export default class Triqui extends Component {
     componentWillMount() {
         this.restart()
     }
+
 
     clicked(e){
         let index = e.target.dataset.square
@@ -67,13 +71,7 @@ export default class Triqui extends Component {
         let winner = null,
             moves = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8], [0,4,8], [2,4,6]],
             board = this.gameState.board
-        //
-        // serviceApi('', 'http://localhost:3000/api/getData', 'GET')
-        //     .then(data => {
-        //         console.log("dataaa",data)
-        // }).catch(error => {
-        //     console.log("errorr", error)
-        // })
+
         for (let i = 0; i <= moves.length; i++){
             console.log(board[moves[i][0]], board[moves[i][1]],board[moves[i][2]])
             if(board[moves[i][0]] == board[moves[i][1]] && board[moves[i][1]] == board[moves[i][2]]){
@@ -127,7 +125,25 @@ export default class Triqui extends Component {
         })
     }
 
+    getHistorial(){
+        serviceApi('', 'http://localhost:3000/api/getData', 'GET')
+            .then(data => {
+                let arrayHistorial = []
+                for (let i = 0; i < data.data.length; i ++){
+                    arrayHistorial.push(data.data[i].winner)
+                }
+                this.setState({tasks:arrayHistorial}, ()=>{
+                    console.log("actualiza ?? ", this.state.tasks)
+                })
+        }).catch(error => {
+            console.log("errorr", error)
+        })
+    }
+
+
+
     render(){
+
         return(
             <div id="game">
                 <div id= "status">{this.state.winnerLine}</div>
@@ -135,7 +151,13 @@ export default class Triqui extends Component {
                 <div>
                     {this.state.squares}
                 </div>
-
+                <div>
+                    <button style={{ display: !this.state.showInfo ? "block" : "none" }}onClick={(e)=>{this.getHistorial()}}> HISTORIAL </button>
+                </div>
+                <div >
+                    <ListItem
+                    tasks = {this.state.tasks}></ListItem>
+                </div>
             </div>
 
         )
