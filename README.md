@@ -11,5 +11,7 @@ DB_URL='mongodb://localhost:27017/DbTriqui'
 
 tener en cuenta que se debe tener instalado mongo en el ambiente local para que pueda hacer la conexión a la base de datos.
 
+la aplicación sera servida en la ruta http://localhost:3000
+
 
 
